@@ -11,7 +11,7 @@ The following **required** user stories are complete:
 - [ X] User sees app icon in home screen and styled launch screen (+1pt)
 - [ X] User can scroll through a list of movies currently playing in theaters from The Movie DB API (+5pt)
 - [ X] User can "Pull to refresh" the movie list (+2pt)
-- [ ] User sees a loading state while waiting for the movies to load (+2pt)
+- [ X] User sees a loading state while waiting for the movies to load (+2pt)
 
 The following **optional** user stories are implemented:
 
