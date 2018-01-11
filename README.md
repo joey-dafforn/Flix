@@ -25,27 +25,27 @@ The following **optional** user stories are implemented:
 The following **additional** user stories are implemented:
 
 - [X] List anything else that you can get done to improve the app functionality! (+1-3pts)
-- [X] Showed the ratings of the movie using 5 stars
+- [X] Showed the ratings of the movie out of 5 stars
 - [X] Showed the popularity of the movie with an icon from IconFinder
 - [X] Inverted the colors of the movie cell when the user clicks on a movie
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
 1. Further implementation of the API including use of other relevant movie data
-2. Implementing an infinite-scroll list of movies (doesn't just get the top 20)
+2. Implementing an infinite-scroll list of movies (don't just get the top 20)
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://imgur.com/Ah1klvu' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
 Describe any challenges encountered while building the app.
-I had a little bit of trouble understanding the tableView and implementing different features on the cell
+I had a little bit of trouble understanding the tableView and implementing different features pertaining to the cell
 
 ## License
 
