@@ -8,22 +8,30 @@
 
 import UIKit
 import AlamofireImage
+import Foundation
 
-class NowPlayingViewController: UIViewController, UITableViewDataSource {
+class NowPlayingViewController: UIViewController, UITableViewDataSource, UISearchBarDelegate {
 
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var searchBar: UISearchBar!
+    var filteredMovies: [[String: Any]]!
     var movies: [[String: Any]] = []
+    var i = 1 // Used to ensure the 'Try again' text is only added
+    // to the alert once
     var refreshControl: UIRefreshControl!
+    let alertController = UIAlertController(title: "Cannot get movies", message: "The internet connection appears to be offline", preferredStyle: .alert)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // create a cancel action
         activityIndicator.startAnimating()
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(NowPlayingViewController.didPullToRefresh(_:)), for: .valueChanged)
         tableView.insertSubview(refreshControl, at: 0)
         tableView.dataSource = self
+        searchBar.delegate = self
+        filteredMovies = movies
         fetchMovies()
     }
     
@@ -38,45 +46,84 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         let task = session.dataTask(with: request) { (data, response, error) in
             //This will run when the network request returns
             if let error = error {
-                print(error.localizedDescription)
+                // Create action to let user try again
+                let tryAgainAction = UIAlertAction(title: "Try again", style: .default) { (action) in
+                    self.fetchMovies()
+                }
+                if self.i == 1 {
+                    // add the try agian action to the alert controller
+                    self.alertController.addAction(tryAgainAction)
+                    self.i = self.i + 1
+                }
+                self.present(self.alertController, animated: true) {
+                    // optional code for what happens after the alert controller has finished presenting
+                }
+                //print(error.localizedDescription)
             }
             else if let data = data {
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-                print (dataDictionary)
+                //print (dataDictionary)
                 //Force unwraps the json, otherwise crashes
                 let movies = dataDictionary["results"] as! [[String: Any]]
                 self.movies = movies
+                self.filteredMovies = movies
                 self.tableView.reloadData()
                 self.refreshControl.endRefreshing()
                 self.activityIndicator.stopAnimating()
+                //print(movies[0]["title"])
+//                for movie in self.movies {
+//                    self.filteredMovies.append(movie["title"] as! String)
+//                }
+                //print (self.filteredMovies)
             }
         }
         task.resume()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movies.count
+        return filteredMovies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieCell
-        
-        
-        let movie = movies[indexPath.row]
+        cell.ratingLabel.settings.fillMode = .precise
+        let movie = filteredMovies[indexPath.row]
         let title = movie["title"] as! String
+        var rating = movie["vote_average"] as! Double
+        rating = rating / 2.0
         let overview = movie["overview"] as! String
+        let popularity = Int(round(movie["popularity"] as! Double))
+        cell.heartImage.image = #imageLiteral(resourceName: "Heart")
+        cell.popularityLabel.text = String(popularity)
         cell.titleLabel.text = title
         cell.overviewLabel.text = overview
+        cell.ratingLabel.rating = rating
         let posterPathString = movie["poster_path"] as! String
         let baseURLString = "https://image.tmdb.org/t/p/w500"
         let posterURL = URL(string: baseURLString + posterPathString)!
         cell.posterImageView.af_setImage(withURL: posterURL)
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor.darkText.withAlphaComponent(0.8)
+        //backgroundView.backgroundColor = UIColor.darkText
+        cell.titleLabel?.highlightedTextColor = UIColor.white
+        cell.overviewLabel?.highlightedTextColor = UIColor.white
+        cell.popularityLabel?.highlightedTextColor = UIColor.white
+        cell.selectedBackgroundView = backgroundView
         return cell
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        // When there is no text, filteredData is the same as the original data
+        // When user has entered text into the search box
+        // Use the filter method to iterate over all items in the data array
+        // For each item, return true if the item should be included and false if the
+        // item should NOT be included
+        filteredMovies = searchText.isEmpty ? movies : movies.filter { (item: [String: Any]) -> Bool in
+            // If dataItem matches the searchText, return true to include it
+            return (item["title"] as! String).range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+        }
+        
+        tableView.reloadData()
     }
     
 

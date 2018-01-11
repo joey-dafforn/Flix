@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import Cosmos
 
 class MovieCell: UITableViewCell {
 
     
+    @IBOutlet weak var heartImage: UIImageView!
+    @IBOutlet weak var popularityLabel: UILabel!
+    @IBOutlet weak var ratingLabel: CosmosView!
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     
