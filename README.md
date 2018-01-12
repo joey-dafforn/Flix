@@ -28,6 +28,7 @@ The following **additional** user stories are implemented:
 - [X] Showed the ratings of the movie out of 5 stars
 - [X] Showed the popularity of the movie with an icon from IconFinder
 - [X] Inverted the colors of the movie cell when the user clicks on a movie
+- [X] User can filter the results by title, rating and popularity
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 

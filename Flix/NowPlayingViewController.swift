@@ -12,11 +12,17 @@ import Foundation
 
 class NowPlayingViewController: UIViewController, UITableViewDataSource, UISearchBarDelegate {
 
+    @IBOutlet weak var popularityFilter: UIButton!
+    @IBOutlet weak var ratingFilter: UIButton!
+    @IBOutlet weak var titleFilter: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     var filteredMovies: [[String: Any]]!
     var movies: [[String: Any]] = []
+    var j = 0
+    var k = 0
+    var l = 0
     var i = 1 // Used to ensure the 'Try again' text is only added
     // to the alert once
     var refreshControl: UIRefreshControl!
@@ -38,7 +44,45 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UISearc
     @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
         fetchMovies()
     }
+    @IBAction func filterByPopularity(_ sender: Any) {
+        if k == 1 {
+            filteredMovies = filteredMovies.sorted {
+                ($0["popularity"] as! Double) > ($1["popularity"] as! Double)
+            }
+            tableView.reloadData()
+            k = 0
+        }
+        else {
+            filteredMovies = filteredMovies.sorted { ($0["popularity"] as! Double) < ($1["popularity"] as! Double) }
+            tableView.reloadData()
+            k = 1
+        }
+    }
+    @IBAction func filterByRating(_ sender: Any) {
+        if l == 1 {
+            filteredMovies = filteredMovies.sorted { ($0["vote_average"] as! Double) > ($1["vote_average"] as! Double) }
+            tableView.reloadData()
+            l = 0
+        }
+        else {
+            filteredMovies = filteredMovies.sorted { ($0["vote_average"] as! Double) < ($1["vote_average"] as! Double) }
+            tableView.reloadData()
+            l = 1
+        }
+    }
     
+    @IBAction func filterByTitle(_ sender: Any) {
+        if j == 1 {
+            filteredMovies = filteredMovies.sorted { ($0["title"] as! String) > ($1["title"] as! String) }
+            tableView.reloadData()
+            j = 0
+        }
+        else {
+            filteredMovies = filteredMovies.sorted { ($0["title"] as! String) < ($1["title"] as! String) }
+            tableView.reloadData()
+            j = 1
+        }
+    }
     func fetchMovies() {
         let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=ab481370ef24f79f957c363148cc19e3")!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
