@@ -44,6 +44,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UISearc
     @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
         fetchMovies()
     }
+    
     @IBAction func filterByPopularity(_ sender: Any) {
         if k == 1 {
             filteredMovies = filteredMovies.sorted {
@@ -156,6 +157,11 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UISearc
         return cell
     }
 
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar)  {
+        searchBar.resignFirstResponder()
+        
+    }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         // When there is no text, filteredData is the same as the original data
         // When user has entered text into the search box
