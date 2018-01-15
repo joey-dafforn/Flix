@@ -23,14 +23,12 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UISearc
     var j = 0
     var k = 0
     var l = 0
-    var i = 1 // Used to ensure the 'Try again' text is only added
-    // to the alert once
+    var i = 1 // Used to ensure the 'Try again' text is only added to the alert once
     var refreshControl: UIRefreshControl!
     let alertController = UIAlertController(title: "Cannot get movies", message: "The internet connection appears to be offline", preferredStyle: .alert)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // create a cancel action
         activityIndicator.startAnimating()
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(NowPlayingViewController.didPullToRefresh(_:)), for: .valueChanged)
@@ -96,18 +94,16 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UISearc
                     self.fetchMovies()
                 }
                 if self.i == 1 {
-                    // add the try agian action to the alert controller
+                    // add the try again action to the alert controller
                     self.alertController.addAction(tryAgainAction)
                     self.i = self.i + 1
                 }
                 self.present(self.alertController, animated: true) {
                     // optional code for what happens after the alert controller has finished presenting
                 }
-                //print(error.localizedDescription)
             }
             else if let data = data {
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-                //print (dataDictionary)
                 //Force unwraps the json, otherwise crashes
                 let movies = dataDictionary["results"] as! [[String: Any]]
                 self.movies = movies
@@ -115,11 +111,6 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UISearc
                 self.tableView.reloadData()
                 self.refreshControl.endRefreshing()
                 self.activityIndicator.stopAnimating()
-                //print(movies[0]["title"])
-//                for movie in self.movies {
-//                    self.filteredMovies.append(movie["title"] as! String)
-//                }
-                //print (self.filteredMovies)
             }
         }
         task.resume()
@@ -149,7 +140,6 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UISearc
         cell.posterImageView.af_setImage(withURL: posterURL)
         let backgroundView = UIView()
         backgroundView.backgroundColor = UIColor.darkText.withAlphaComponent(0.8)
-        //backgroundView.backgroundColor = UIColor.darkText
         cell.titleLabel?.highlightedTextColor = UIColor.white
         cell.overviewLabel?.highlightedTextColor = UIColor.white
         cell.popularityLabel?.highlightedTextColor = UIColor.white
