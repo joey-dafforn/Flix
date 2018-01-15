@@ -166,7 +166,16 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UISearc
         tableView.reloadData()
     }
     
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cell = sender as! UITableViewCell
+        if let indexPath = tableView.indexPath(for: cell) {
+            let movie = movies[indexPath.row]
+            let detailViewController = segue.destination as! DetailViewController
+            detailViewController.movie = movie
+        }
+    }
+    
+    
     /*
     // MARK: - Navigation
 
