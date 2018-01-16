@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, UICollectionViewDelegate {
 
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
@@ -35,6 +35,10 @@ class DetailViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+//    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+//        print("Selected cell number: \(indexPath.row)")
+//    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
