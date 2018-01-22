@@ -158,7 +158,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nJw-1S-0Iv">
-                                <rect key="frame" x="0.0" y="64" width="375" height="252"/>
+                                <rect key="frame" x="0.0" y="116" width="375" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GIC-a6-mVo">
@@ -191,7 +191,7 @@
                         <viewLayoutGuide key="safeArea" id="biB-H8-v98"/>
                     </view>
                     <connections>
-                        <outlet property="backDropImageView" destination="nJw-1S-0Iv" id="it8-4a-8aX"/>
+                        <outlet property="backDropImageView" destination="nJw-1S-0Iv" id="dbw-IC-Yfr"/>
                         <outlet property="overviewLabel" destination="ugi-dS-DBK" id="Saf-PA-rG4"/>
                         <outlet property="posterImageView" destination="GIC-a6-mVo" id="AAd-Nb-ojy"/>
                         <outlet property="releaseDateLabel" destination="6zY-s8-Tfp" id="7Ke-uR-CID"/>
@@ -227,6 +227,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="8fH-O4-9RT" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ogv-FW-4x5">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
