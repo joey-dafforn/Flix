@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,9 +26,8 @@
                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="137" estimatedRowHeight="137" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZU2-PU-C01">
-                                <rect key="frame" x="0.0" y="134" width="375" height="533"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="137" estimatedRowHeight="137" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZU2-PU-C01">
+                                <rect key="frame" x="0.0" y="146" width="375" height="521"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" insetsLayoutMarginsFromSafeArea="NO" searchBarStyle="minimal" text="" placeholder="Search movies" id="SgQ-cY-zr5">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -41,26 +42,40 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="136.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WRc-kW-4RL">
-                                                    <rect key="frame" x="6" y="3" width="98" height="128"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WRc-kW-4RL">
+                                                    <rect key="frame" x="8" y="8" width="98" height="120.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="120.5" id="E9s-hg-Waj"/>
+                                                        <constraint firstAttribute="width" constant="98" id="qte-2K-qkX"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wonder Woman" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XPs-85-PSg">
-                                                    <rect key="frame" x="119" y="3" width="229" height="29"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wonder Woman" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XPs-85-PSg">
+                                                    <rect key="frame" x="114" y="8" width="253" height="24"/>
+                                                    <color key="backgroundColor" red="0.053865556940914661" green="1" blue="0.0019352455799938051" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="An amazon princess comes to the world of Man to become the greatest of the female superheroes." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwY-8a-W8i">
-                                                    <rect key="frame" x="119" y="45" width="229" height="91"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="An amazon princess comes to the world of Man to become the greatest of the female superheroes." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwY-8a-W8i">
+                                                    <rect key="frame" x="114" y="58" width="253" height="20.5"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.18495827875848647" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="500" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwU-Mh-GLY">
+                                                    <rect key="frame" x="314" y="31" width="46" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="emX-M2-6Ld">
+                                                    <rect key="frame" x="283" y="28" width="23" height="27"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VXd-ad-OXN" customClass="CosmosView" customModule="Cosmos">
-                                                    <rect key="frame" x="119" y="31" width="118" height="19"/>
+                                                    <rect key="frame" x="114" y="36" width="118" height="19"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <userDefinedRuntimeAttributes>
@@ -82,18 +97,19 @@
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="updateOnTouch" value="NO"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="500" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwU-Mh-GLY">
-                                                    <rect key="frame" x="314" y="31" width="46" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="emX-M2-6Ld">
-                                                    <rect key="frame" x="283" y="28" width="23" height="27"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="dwY-8a-W8i" firstAttribute="top" secondItem="XPs-85-PSg" secondAttribute="top" constant="50" id="0ef-CU-tja"/>
+                                                <constraint firstAttribute="bottom" secondItem="WRc-kW-4RL" secondAttribute="bottom" constant="8" id="DGk-j9-rc5"/>
+                                                <constraint firstItem="XPs-85-PSg" firstAttribute="top" secondItem="WRc-kW-4RL" secondAttribute="top" id="DWJ-c5-7ee"/>
+                                                <constraint firstItem="dwY-8a-W8i" firstAttribute="leading" secondItem="XPs-85-PSg" secondAttribute="leading" id="InC-N1-gp8"/>
+                                                <constraint firstAttribute="trailing" secondItem="dwY-8a-W8i" secondAttribute="trailing" constant="8" id="LmX-ij-nlE"/>
+                                                <constraint firstAttribute="trailing" secondItem="XPs-85-PSg" secondAttribute="trailing" constant="8" id="NBq-g5-Qjh"/>
+                                                <constraint firstItem="WRc-kW-4RL" firstAttribute="leading" secondItem="Dag-m5-IEj" secondAttribute="leading" constant="8" id="PIi-CI-0au"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="dwY-8a-W8i" secondAttribute="bottom" constant="8" id="UwA-Yr-suL"/>
+                                                <constraint firstItem="WRc-kW-4RL" firstAttribute="top" secondItem="Dag-m5-IEj" secondAttribute="top" constant="8" id="hZF-fO-I4J"/>
+                                                <constraint firstItem="XPs-85-PSg" firstAttribute="leading" secondItem="WRc-kW-4RL" secondAttribute="leading" constant="106" id="leC-hz-W01"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="heartImage" destination="emX-M2-6Ld" id="wEw-vi-je5"/>
@@ -107,32 +123,54 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zRW-jX-5Am">
-                                <rect key="frame" x="165" y="112" width="44" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Rating"/>
-                                <connections>
-                                    <action selector="filterByRating:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OHv-z9-i8x"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kNq-py-6Jo">
-                                <rect key="frame" x="290" y="112" width="69" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Popularity"/>
-                                <connections>
-                                    <action selector="filterByPopularity:" destination="BYZ-38-t0r" eventType="touchUpInside" id="F44-IQ-sn3"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rgr-2a-BcR">
-                                <rect key="frame" x="16" y="112" width="30" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Title"/>
-                                <connections>
-                                    <action selector="filterByTitle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="o5s-WT-p76"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cCN-ZX-Phm">
+                                <rect key="frame" x="0.0" y="116" width="375" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zRW-jX-5Am">
+                                        <rect key="frame" x="165" y="-0.5" width="44" height="30"/>
+                                        <state key="normal" title="Rating"/>
+                                        <connections>
+                                            <action selector="filterByRating:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OHv-z9-i8x"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kNq-py-6Jo">
+                                        <rect key="frame" x="8" y="0.0" width="69" height="30"/>
+                                        <state key="normal" title="Popularity"/>
+                                        <connections>
+                                            <action selector="filterByPopularity:" destination="BYZ-38-t0r" eventType="touchUpInside" id="F44-IQ-sn3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rgr-2a-BcR">
+                                        <rect key="frame" x="337" y="0.0" width="30" height="30"/>
+                                        <state key="normal" title="Title"/>
+                                        <connections>
+                                            <action selector="filterByTitle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="o5s-WT-p76"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="rgr-2a-BcR" secondAttribute="trailing" constant="8" id="0D2-Vt-dJ4"/>
+                                    <constraint firstItem="zRW-jX-5Am" firstAttribute="centerX" secondItem="cCN-ZX-Phm" secondAttribute="centerX" id="5On-fZ-QEw"/>
+                                    <constraint firstItem="kNq-py-6Jo" firstAttribute="leading" secondItem="cCN-ZX-Phm" secondAttribute="leading" constant="8" id="BeN-LK-KD7"/>
+                                    <constraint firstItem="rgr-2a-BcR" firstAttribute="top" secondItem="cCN-ZX-Phm" secondAttribute="top" id="Dle-4b-GDo"/>
+                                    <constraint firstItem="kNq-py-6Jo" firstAttribute="top" secondItem="cCN-ZX-Phm" secondAttribute="top" id="STh-Nv-nxm"/>
+                                    <constraint firstAttribute="bottom" secondItem="rgr-2a-BcR" secondAttribute="bottom" id="Vet-3c-mpD"/>
+                                    <constraint firstAttribute="bottom" secondItem="kNq-py-6Jo" secondAttribute="bottom" id="VhY-nA-sYu"/>
+                                    <constraint firstItem="zRW-jX-5Am" firstAttribute="centerY" secondItem="cCN-ZX-Phm" secondAttribute="centerY" id="Z4H-o8-sgH"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="1" green="0.45282230988978434" blue="0.15213700558435106" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="ZU2-PU-C01" secondAttribute="bottom" id="5S7-Lf-mqD"/>
+                            <constraint firstItem="ZU2-PU-C01" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="DzO-xI-Rzu"/>
+                            <constraint firstItem="ZU2-PU-C01" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Q7L-Gp-qrm"/>
+                            <constraint firstItem="cCN-ZX-Phm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ZAq-lM-C3Y"/>
+                            <constraint firstItem="cCN-ZX-Phm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="iRX-mK-Js3"/>
+                            <constraint firstItem="cCN-ZX-Phm" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="jgv-mV-lMu"/>
+                            <constraint firstItem="ZU2-PU-C01" firstAttribute="top" secondItem="cCN-ZX-Phm" secondAttribute="bottom" id="zYv-Sn-tet"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Movies" id="7X1-sg-ojN"/>
@@ -157,48 +195,66 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rvr-4U-I8L">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rvr-4U-I8L">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3IU-Ge-7lm">
-                                        <rect key="frame" x="8" y="404" width="359" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <rect key="frame" x="0.0" y="404" width="375" height="200"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                         <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </webView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nJw-1S-0Iv">
-                                        <rect key="frame" x="-1" y="0.0" width="375" height="200"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nJw-1S-0Iv">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GIC-a6-mVo">
-                                        <rect key="frame" x="8" y="138" width="98" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wonder Woman" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zfo-5C-YGi">
-                                        <rect key="frame" x="114" y="200" width="237" height="31"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Release Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zY-s8-Tfp">
+                                        <rect key="frame" x="114" y="235" width="95" height="31"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" red="0.98798994600000001" green="0.9952727697" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="An amazon princess comes to the world of Man to become the greatest of the female superheroes." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugi-dS-DBK">
+                                        <rect key="frame" x="0.0" y="274" width="375" height="122"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" red="0.98798994600000001" green="0.9952727697" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Wonder Woman" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zfo-5C-YGi">
+                                        <rect key="frame" x="110" y="203" width="149.5" height="24"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                        <color key="textColor" red="0.98798994600000001" green="0.9952727697" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.9827534931417915" green="0.9870651198563436" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Release Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zY-s8-Tfp">
-                                        <rect key="frame" x="114" y="235" width="237" height="31"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <color key="textColor" red="0.98798994600000001" green="0.9952727697" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="An amazon princess comes to the world of Man to become the greatest of the female superheroes." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugi-dS-DBK">
-                                        <rect key="frame" x="24" y="274" width="343" height="122"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <color key="textColor" red="0.98798994600000001" green="0.9952727697" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GIC-a6-mVo">
+                                        <rect key="frame" x="8" y="138" width="98" height="128"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="98" id="df5-e8-0o6"/>
+                                            <constraint firstAttribute="height" constant="128" id="gjO-nK-JNj"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="GIC-a6-mVo" firstAttribute="centerY" secondItem="nJw-1S-0Iv" secondAttribute="bottom" id="2qS-FA-nji"/>
+                                    <constraint firstItem="ugi-dS-DBK" firstAttribute="trailing" secondItem="nJw-1S-0Iv" secondAttribute="trailing" id="UaD-Rf-rSg"/>
+                                    <constraint firstItem="6zY-s8-Tfp" firstAttribute="leading" secondItem="GIC-a6-mVo" secondAttribute="trailing" constant="8" id="dGi-gA-RHe"/>
+                                    <constraint firstItem="Zfo-5C-YGi" firstAttribute="centerY" secondItem="GIC-a6-mVo" secondAttribute="centerY" constant="12" id="fZP-q1-6L4"/>
+                                    <constraint firstItem="6zY-s8-Tfp" firstAttribute="top" secondItem="Zfo-5C-YGi" secondAttribute="bottom" constant="8" id="jZO-Yg-vws"/>
+                                    <constraint firstItem="ugi-dS-DBK" firstAttribute="leading" secondItem="nJw-1S-0Iv" secondAttribute="leading" id="okF-EO-ABw"/>
+                                    <constraint firstItem="Zfo-5C-YGi" firstAttribute="leading" secondItem="GIC-a6-mVo" secondAttribute="trailing" constant="4" id="qP1-gu-ICa"/>
+                                    <constraint firstItem="ugi-dS-DBK" firstAttribute="top" secondItem="GIC-a6-mVo" secondAttribute="bottom" constant="8" id="s2K-1j-ydR"/>
+                                </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.18216349223117134" green="0.18216349223117134" blue="0.18216349223117134" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.96507912392293616" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Rvr-4U-I8L" secondAttribute="bottom" id="65H-QR-Kyf"/>
+                            <constraint firstItem="Rvr-4U-I8L" firstAttribute="leading" secondItem="AhN-A3-dHa" secondAttribute="leading" id="Iy7-fN-Qvs"/>
+                            <constraint firstItem="Rvr-4U-I8L" firstAttribute="top" secondItem="AhN-A3-dHa" secondAttribute="top" id="KMN-Bj-4T8"/>
+                            <constraint firstItem="GIC-a6-mVo" firstAttribute="leading" secondItem="AhN-A3-dHa" secondAttribute="leading" constant="8" id="M4i-IX-ZcC"/>
+                            <constraint firstAttribute="trailing" secondItem="nJw-1S-0Iv" secondAttribute="trailing" id="n8r-O6-qaI"/>
+                            <constraint firstAttribute="trailing" secondItem="Rvr-4U-I8L" secondAttribute="trailing" id="njE-Yn-FOM"/>
+                            <constraint firstItem="nJw-1S-0Iv" firstAttribute="leading" secondItem="AhN-A3-dHa" secondAttribute="leading" id="sGk-Gb-5iM"/>
+                            <constraint firstItem="nJw-1S-0Iv" firstAttribute="height" secondItem="AhN-A3-dHa" secondAttribute="height" multiplier="0.3" id="wEu-y8-phd"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="biB-H8-v98"/>
                     </view>
                     <connections>
@@ -213,7 +269,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="scJ-fu-kTb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1540" y="117.39130434782609"/>
+            <point key="canvasLocation" x="1805.5999999999999" y="492.50374812593708"/>
         </scene>
         <!--Now Playing-->
         <scene sceneID="VhY-zy-OoU">
@@ -232,7 +288,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wsk-Xq-m6d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-87.200000000000003" y="116.49175412293854"/>
+            <point key="canvasLocation" x="41" y="116"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Wz4-sR-0fc">
