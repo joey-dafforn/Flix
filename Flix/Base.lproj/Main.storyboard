@@ -51,14 +51,12 @@
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wonder Woman" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XPs-85-PSg">
                                                     <rect key="frame" x="114" y="8" width="253" height="24"/>
-                                                    <color key="backgroundColor" red="0.053865556940914661" green="1" blue="0.0019352455799938051" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="An amazon princess comes to the world of Man to become the greatest of the female superheroes." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwY-8a-W8i">
                                                     <rect key="frame" x="114" y="58" width="253" height="20.5"/>
-                                                    <color key="backgroundColor" red="0.0" green="0.18495827875848647" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -161,7 +159,6 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.45282230988978434" blue="0.15213700558435106" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="ZU2-PU-C01" secondAttribute="bottom" id="5S7-Lf-mqD"/>
                             <constraint firstItem="ZU2-PU-C01" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="DzO-xI-Rzu"/>
@@ -244,7 +241,6 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.96507912392293616" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Rvr-4U-I8L" secondAttribute="bottom" id="65H-QR-Kyf"/>
                             <constraint firstItem="Rvr-4U-I8L" firstAttribute="leading" secondItem="AhN-A3-dHa" secondAttribute="leading" id="Iy7-fN-Qvs"/>
