@@ -14,8 +14,8 @@ class SuperheroViewController: UIViewController, UICollectionViewDataSource {
     
     var i = 1
     let alertController = UIAlertController(title: "Cannot get movies", message: "The internet connection appears to be offline", preferredStyle: .alert)
-    var movies: [[String: Any]] = []
-    
+    var movies: [Movie] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = self
@@ -30,7 +30,8 @@ class SuperheroViewController: UIViewController, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PosterCell", for: indexPath) as! PosterCell
         let movie = movies[indexPath.item]
-        if let posterPathString = movie["poster_path"] as? String {
+        let posterPathString = movie.posterPathString
+        if !posterPathString.isEmpty {
             // Following only runs if poster path not nil
             let baseURLString = "https://image.tmdb.org/t/p/w500"
             let posterURL = URL(string: baseURLString + posterPathString)!
@@ -62,8 +63,11 @@ class SuperheroViewController: UIViewController, UICollectionViewDataSource {
             else if let data = data {
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
                 //Force unwraps the json, otherwise crashes
-                let movies = dataDictionary["results"] as! [[String: Any]]
-                self.movies = movies
+                let moviesasdf = dataDictionary["results"] as! [[String: Any]]
+                for dictionary in moviesasdf {
+                    let movie = Movie(dictionary: dictionary)
+                    self.movies.append(movie)
+                }
                 self.collectionView.reloadData()
                 //self.refreshControl.endRefreshing()
                 //self.activityIndicator.stopAnimating()

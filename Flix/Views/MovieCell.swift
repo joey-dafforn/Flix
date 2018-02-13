@@ -17,7 +17,14 @@ class MovieCell: UITableViewCell {
     @IBOutlet weak var ratingLabel: CosmosView!
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    
+    var movie: Movie! {
+        didSet {
+            titleLabel.text = movie.title
+            overviewLabel.text = movie.overview
+            ratingLabel.rating = movie.rating
+        }
+    }
+
     @IBOutlet weak var overviewLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

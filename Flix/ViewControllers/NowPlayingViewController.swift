@@ -18,8 +18,8 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UISearc
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
-    var filteredMovies: [[String: Any]]!
-    var movies: [[String: Any]] = []
+    var filteredMovies: [Movie] = []
+    var movies: [Movie] = []
     var j = 0
     var k = 0
     var l = 0
@@ -46,25 +46,25 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UISearc
     @IBAction func filterByPopularity(_ sender: Any) {
         if k == 1 {
             filteredMovies = filteredMovies.sorted {
-                ($0["popularity"] as! Double) > ($1["popularity"] as! Double)
+                ($0.popularity) > ($1.popularity)
             }
             tableView.reloadData()
             k = 0
         }
         else {
-            filteredMovies = filteredMovies.sorted { ($0["popularity"] as! Double) < ($1["popularity"] as! Double) }
+            filteredMovies = filteredMovies.sorted { ($0.popularity) < ($1.popularity) }
             tableView.reloadData()
             k = 1
         }
     }
     @IBAction func filterByRating(_ sender: Any) {
         if l == 1 {
-            filteredMovies = filteredMovies.sorted { ($0["vote_average"] as! Double) > ($1["vote_average"] as! Double) }
+            filteredMovies = filteredMovies.sorted { ($0.rating) > ($1.rating) }
             tableView.reloadData()
             l = 0
         }
         else {
-            filteredMovies = filteredMovies.sorted { ($0["vote_average"] as! Double) < ($1["vote_average"] as! Double) }
+            filteredMovies = filteredMovies.sorted { ($0.rating) < ($1.rating) }
             tableView.reloadData()
             l = 1
         }
@@ -72,48 +72,54 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UISearc
     
     @IBAction func filterByTitle(_ sender: Any) {
         if j == 1 {
-            filteredMovies = filteredMovies.sorted { ($0["title"] as! String) > ($1["title"] as! String) }
+            filteredMovies = filteredMovies.sorted { ($0.title) > ($1.title) }
             tableView.reloadData()
             j = 0
         }
         else {
-            filteredMovies = filteredMovies.sorted { ($0["title"] as! String) < ($1["title"] as! String) }
+            filteredMovies = filteredMovies.sorted { ($0.title) < ($1.title) }
             tableView.reloadData()
             j = 1
         }
     }
     func fetchMovies() {
-        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=ab481370ef24f79f957c363148cc19e3")!
-        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
-        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
-        let task = session.dataTask(with: request) { (data, response, error) in
-            //This will run when the network request returns
-            if let error = error {
-                // Create action to let user try again
-                let tryAgainAction = UIAlertAction(title: "Try again", style: .default) { (action) in
-                    self.fetchMovies()
-                }
-                if self.i == 1 {
-                    // add the try again action to the alert controller
-                    self.alertController.addAction(tryAgainAction)
-                    self.i = self.i + 1
-                }
-                self.present(self.alertController, animated: true) {
-                    // optional code for what happens after the alert controller has finished presenting
-                }
-            }
-            else if let data = data {
-                let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-                //Force unwraps the json, otherwise crashes
-                let movies = dataDictionary["results"] as! [[String: Any]]
+//        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=ab481370ef24f79f957c363148cc19e3")!
+//        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+//        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+//        let task = session.dataTask(with: request) { (data, response, error) in
+//            //This will run when the network request returns
+//            if let error = error {
+//                // Create action to let user try again
+//                let tryAgainAction = UIAlertAction(title: "Try again", style: .default) { (action) in
+//                    self.fetchMovies()
+//                }
+//                if self.i == 1 {
+//                    // add the try again action to the alert controller
+//                    self.alertController.addAction(tryAgainAction)
+//                    self.i = self.i + 1
+//                }
+//                self.present(self.alertController, animated: true) {
+//                    // optional code for what happens after the alert controller has finished presenting
+//                }
+//            }
+//            else if let data = data {
+//                let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+//                //Force unwraps the json, otherwise crashes
+//                let movieDictionaries = dataDictionary["results"] as! [[String: Any]]
+//                self.movies = []
+//                for dictionary in movieDictionaries {
+//                    let movie = Movie(dictionary: dictionary)
+//                    self.movies.append(movie)
+//                }
+        MovieApiManager().nowPlayingMovies{(movies: [Movie]?, error: Error?) in
+            if let movies = movies {
                 self.movies = movies
                 self.filteredMovies = movies
-                self.tableView.reloadData()
                 self.refreshControl.endRefreshing()
                 self.activityIndicator.stopAnimating()
+                self.tableView.reloadData()
             }
         }
-        task.resume()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -122,19 +128,20 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UISearc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieCell
+        cell.movie = movies[indexPath.row]
         cell.ratingLabel.settings.fillMode = .precise
         let movie = filteredMovies[indexPath.row]
-        let title = movie["title"] as! String
-        var rating = movie["vote_average"] as! Double
-        rating = rating / 2.0
-        let overview = movie["overview"] as! String
-        let popularity = Int(round(movie["popularity"] as! Double))
+//        let title = movie.title
+//        var rating = movie.rating
+//        rating = rating / 2.0
+//        let overview = movie.overview
+//        let popularity = movie.popularity
         cell.heartImage.image = #imageLiteral(resourceName: "Heart")
-        cell.popularityLabel.text = String(popularity)
-        cell.titleLabel.text = title
-        cell.overviewLabel.text = overview
-        cell.ratingLabel.rating = rating
-        let posterPathString = movie["poster_path"] as! String
+//        cell.popularityLabel.text = String(popularity)
+//        cell.titleLabel.text = title
+//        cell.overviewLabel.text = overview
+//        cell.ratingLabel.rating = rating
+        let posterPathString = movie.posterPathString
         let baseURLString = "https://image.tmdb.org/t/p/w500"
         let posterURL = URL(string: baseURLString + posterPathString)!
         cell.posterImageView.af_setImage(withURL: posterURL)
@@ -158,11 +165,10 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UISearc
         // Use the filter method to iterate over all items in the data array
         // For each item, return true if the item should be included and false if the
         // item should NOT be included
-        filteredMovies = searchText.isEmpty ? movies : movies.filter { (item: [String: Any]) -> Bool in
+        filteredMovies = searchText.isEmpty ? movies : movies.filter { (item: Movie) -> Bool in
             // If dataItem matches the searchText, return true to include it
-            return (item["title"] as! String).range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+            return (item.title as! String).range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
-        
         tableView.reloadData()
     }
     

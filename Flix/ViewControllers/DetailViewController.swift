@@ -18,19 +18,19 @@ class DetailViewController: UIViewController, UICollectionViewDelegate {
     @IBOutlet weak var webViewPlayer: UIWebView!
     @IBOutlet weak var scrollyView: UIScrollView!
     
-    var movie: [String: Any]?
+    var movie: Movie?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollyView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height)
         if let movie = movie {
-            titleLabel.text = movie["title"] as? String
-            releaseDateLabel.text = movie["release_date"] as? String
-            overviewLabel.text = movie["overview"] as? String
-            let backdropPathString = movie["backdrop_path"] as! String
-            let movieID = movie["id"] as! Int
+            titleLabel.text = movie.title
+            releaseDateLabel.text = movie.releaseDate
+            overviewLabel.text = movie.overview
+            let backdropPathString = movie.backdropPathString
+            let movieID = movie.movieID
             fetchMovieVideo(ID: movieID)
-            let posterPathString = movie["poster_path"] as! String
+            let posterPathString = movie.posterPathString
             let baseURLString = "https://image.tmdb.org/t/p/w500"
             let backdropURL = URL(string: baseURLString + backdropPathString)!
             backDropImageView.af_setImage(withURL: backdropURL)
